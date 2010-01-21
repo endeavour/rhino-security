@@ -175,6 +175,7 @@ namespace Rhino.Security.Services
 		public void Save(Permission permission)
 		{
 			session.Save(permission);
+            session.Flush();
 		}
 
 		/// <summary>

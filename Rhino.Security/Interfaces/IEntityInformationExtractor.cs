@@ -20,9 +20,10 @@ namespace Rhino.Security.Interfaces
 		/// Gets the description of this security key, used when rhino security needs
 		/// to generate a message that involves this security key
 		/// </summary>
+		/// <param name="entity">The entity.</param>
 		/// <param name="securityKey">The security key.</param>
 		/// <returns></returns>
-		string GetDescription(Guid securityKey);
+		string GetDescription(TEntity entity, Guid securityKey);
 
 		/// <summary>
 		/// Gets the name of the security key property.

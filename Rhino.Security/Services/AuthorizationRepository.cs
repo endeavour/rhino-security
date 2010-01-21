@@ -36,6 +36,7 @@ namespace Rhino.Security.Services
 		{
 			var ug = new UsersGroup {Name = name};
 		    session.Save(ug);
+            session.Flush();
 			return ug;
 		}
 
@@ -90,6 +91,7 @@ namespace Rhino.Security.Services
 			group.Users.Clear();
 
 			session.Delete(group);
+            session.Flush();
 		}
 
         ///<summary>
@@ -105,6 +107,7 @@ namespace Rhino.Security.Services
             group.Name = newName;
             
             session.Save(group);
+            session.Flush();
             return group;
         }
 
@@ -127,6 +130,7 @@ namespace Rhino.Security.Services
 			group.Entities.Clear();
 
 			session.Delete(group);
+            session.Flush();
 		}
 
 
@@ -154,6 +158,7 @@ namespace Rhino.Security.Services
 			}
 
 			session.Delete(operation);
+            session.Flush();
 		}
 
 		/// <summary>
@@ -218,6 +223,7 @@ namespace Rhino.Security.Services
 		{
 			EntitiesGroup eg = new EntitiesGroup {Name = name};
 		    session.Save(eg);
+            session.Flush();
 			return eg;
 		}
 
@@ -233,6 +239,7 @@ namespace Rhino.Security.Services
             Guard.Against(group == null, "There is no entities group named: " + entitiesGroupName);
             group.Name = newName;
             session.Save(group);
+            session.Flush();
             return group;
         }
 
@@ -371,6 +378,7 @@ namespace Rhino.Security.Services
 			}
 
 			session.Save(op);
+            session.Flush();
 			return op;
 		}
 
@@ -451,6 +459,7 @@ namespace Rhino.Security.Services
 		public void RemovePermission(Permission permission)
 		{
 			session.Delete(permission);
+            session.Flush();
 		}
 
 		#endregion
@@ -476,6 +485,7 @@ namespace Rhino.Security.Services
 				reference.EntitySecurityKey = key;
 				reference.Type = GetOrCreateEntityType<TEntity>();
 				session.Save(reference);
+                session.Flush();
 			}
 			return reference;
 		}
@@ -490,6 +500,7 @@ namespace Rhino.Security.Services
 			{
 				entityType = new EntityType {Name = typeof (TEntity).FullName};
 			    session.Save(entityType);
+                session.Flush();
 			}
 			return entityType;
 		}

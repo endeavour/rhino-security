@@ -47,7 +47,7 @@ namespace Rhino.Security
 		public static string GetDescription<TEntity>(TEntity entity) where TEntity : class
 		{
             IEntityInformationExtractor<TEntity> extractor = ServiceLocator.Current.GetInstance<IEntityInformationExtractor<TEntity>>();
-			return extractor.GetDescription(ExtractKey(entity));
+			return extractor.GetDescription(entity, ExtractKey(entity));
 		}
 
 		/// <summary>
